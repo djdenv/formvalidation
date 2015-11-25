@@ -25,7 +25,8 @@
             name: 'name',
             type: 'type',
             url: 'url',
-            validkey: 'validKey'
+            validkey: 'validKey',
+            async: 'async'
         },
 
         /**
@@ -60,6 +61,8 @@
          * - type {String} [optional] Can be GET or POST (default)
          * - url {String|Function}
          * - validKey {String} [optional]: The valid key. It's "valid" by default
+         * - async {String|boolean} [optional]: Run the AJAX request in async mode or 
+         *   syncronous. Can be true (default async) or false (syncronous). Has no impact if also using delay option.
          * This is useful when connecting to external remote server or APIs provided by 3rd parties
          * @returns {Deferred}
          */
@@ -98,6 +101,7 @@
                 dataType: options.dataType || 'json',
                 headers: options.headers || {},
                 type: options.type || 'GET',
+                async: options.async || true,
                 url: url
             };
             if (options.crossDomain !== null) {
